@@ -14,10 +14,11 @@
 """The Python implementation of the GRPC helloworld.Greeter client."""
 
 from __future__ import print_function
+import os
 import logging
-
+from logging.config import dictConfig
 import grpc
-
+from grpc_python import config
 import helloworld_pb2
 import helloworld_pb2_grpc
 
@@ -33,5 +34,6 @@ def run():
 
 
 if __name__ == '__main__':
-    logging.basicConfig()
+    os.makedirs('logs', exist_ok=True)
+    dictConfig(config.logging_config_dict)
     run()
